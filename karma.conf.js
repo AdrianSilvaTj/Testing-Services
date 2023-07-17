@@ -8,7 +8,7 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
-      require("karma-firefox-launcher"),
+      // require("karma-firefox-launcher"),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma'),
@@ -45,10 +45,10 @@ module.exports = function (config) {
     },
     // para mocha reporter
     reporters: ['mocha'],
-    browsers: ["Chrome"],
+    browsers: ["ChromeHeadless"],
     customLaunchers: {
       ChromeHeadlessCI: {
-        base: 'Chrome',
+        base: 'ChromeHeadless',
         flags: ['--no-sandbox']
       },
     },
