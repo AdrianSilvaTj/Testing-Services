@@ -1,6 +1,6 @@
 import { Person } from "./person.model";
 
-fdescribe('Test for Person', () => {
+describe('Test for Person', () => {
   let person: Person;
 
   beforeEach(() => {
@@ -23,23 +23,23 @@ fdescribe('Test for Person', () => {
       // Assert
       expect(rta).toEqual('down');
     });
-    it('should return a string: overweigth 2', () => {
+    it('should return a string: overweight 2', () => {
       //Arrange
       person.weigth = 100;
       person.heigth = 1.65;
       // Act
       const rta = person.calcIMC();
       // Assert
-      expect(rta).toEqual('overweigth 2');
+      expect(rta).toEqual('overweight 2');
     });
-    it('should return a string: overweigth 1', () => {
+    it('should return a string: overweight 1', () => {
       //Arrange
       person.weigth = 80;
       person.heigth = 1.65;
       // Act
       const rta = person.calcIMC();
       // Assert
-      expect(rta).toEqual('overweigth 1');
+      expect(rta).toEqual('overweight 1');
     });
   })
 })

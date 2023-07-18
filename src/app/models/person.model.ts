@@ -18,13 +18,13 @@ export class Person{
       }else if(result >=19 && result < 24){
         return 'normal';
       }else if(result >=25 && result < 26){
-        return 'overweigth';
+        return 'overweight';
       }else if(result >=27 && result <= 29){
-        return 'overweigth 1';
+        return 'overweight 1';
       }else if(result >=30 && result < 39){
-        return 'overweigth 2';
+        return 'overweight 2';
       }else if(result >=40){
-        return 'overweigth 3';
+        return 'overweight 3';
       }else {
         return 'not found';
       }
