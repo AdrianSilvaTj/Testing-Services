@@ -2,10 +2,12 @@
   <h1>Products component</h1>
   <div class="my-grid">
     <figure *ngFor="let product of products">
-      <img [src]="product.images[0]" alt="">
-      <figcaption>
-        {{product.title}} - {{product.price}}
-      </figcaption>
+      <app-product [product]="product"></app-product>
     </figure>
   </div>
+  <button [disabled]="status === 'loading'" (click)="getAllProducts()">
+    <span *ngIf="status === 'init' || status === 'success'">Load more...</span>
+    <span *ngIf="status === 'loading'">Loading</span>
+    <span *ngIf="status === 'error'">Retry</span>
+  </button>
 </section>

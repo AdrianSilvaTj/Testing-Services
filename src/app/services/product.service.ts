@@ -33,7 +33,7 @@ export class ProductService {
 
   getAll(limit?: number, offset?: number): Observable<Product[]> {
     let params = new HttpParams();
-    if (limit != null && offset != null && limit > 0 && offset > 0) {
+    if (limit && offset != null) {
       params = params.set('limit', limit);
       params = params.set('offset', offset);
     }
