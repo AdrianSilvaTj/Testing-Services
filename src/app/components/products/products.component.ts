@@ -1,3 +1,4 @@
+import { ValueService } from 'src/app/services/value.service';
 import { Product } from './../../models/product.model';
 import { ProductService } from './../../services/product.service';
 import { Component } from '@angular/core';
@@ -12,8 +13,12 @@ export class ProductsComponent {
   limit = 12;
   offset = 0;
   status: 'loading' | 'success' | 'error' | 'init' = 'init';
+  rta = '';
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private valueService: ValueService,
+    ) {}
 
   ngOnInit() {
     this.getAllProducts();
@@ -23,10 +28,24 @@ export class ProductsComponent {
     this.status = 'loading';
     this.productService
       .getAll(this.limit, this.offset)
-      .subscribe((products) => {
-        this.products = [...this.products, ...products];
-        this.offset += this.limit;
-        this.status = 'success';
+      .subscribe({
+        next: products => {
+          this.products = [...this.products, ...products];
+          this.offset += this.limit;
+          this.status = 'success';
+        },
+        error: error => {
+          setTimeout(() => {
+          this.products = [];
+          this.status = 'error';
+          }, 3000);
+        }
       });
   }
+
+  async callPromise(){
+    const rta = await this.valueService.getPromiseValue();
+    this.rta = rta;
+  }
+
 }
